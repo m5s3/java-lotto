@@ -16,12 +16,12 @@ public class LottoGame {
         int returnOfRate = 0;
         int purchaseAmount = calculatePurchaseAmount(lottos);
         for (Lotto lotto : lottos) {
-            returnOfRate += winnerLotto.getPrize(lotto);
+            returnOfRate += winnerLotto.getRank(lotto).getPrize();
         }
         return Math.floor(((double) returnOfRate / purchaseAmount) * 100) / 100;
     }
 
-    public List<Rank> checkRanks(Lotto winnerLotto, List<Lotto> lottos) {
+    public List<Rank> checkRanks(WinningLotto winnerLotto, List<Lotto> lottos) {
         List<Rank> ranks = new ArrayList<>();
         for (Lotto lotto : lottos) {
             ranks.add(winnerLotto.getRank(lotto));
@@ -35,6 +35,10 @@ public class LottoGame {
 
     public Lotto createLotto(List<Integer> numbers) {
         return this.lottoFactory.createLotto(numbers);
+    }
+
+    public WinningLotto createLotto(List<Integer> numbers, int bonusNumber) {
+        return this.lottoFactory.createLotto(numbers, bonusNumber);
     }
 
     private int calculatePurchaseAmount(List<Lotto> lottos) {

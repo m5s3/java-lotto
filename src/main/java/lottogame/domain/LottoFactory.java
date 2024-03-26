@@ -25,4 +25,8 @@ public class LottoFactory {
     public Lotto createLotto(List<Integer> numbers) {
         return new Lotto(numbers);
     }
+
+    public WinningLotto createLotto(List<Integer> numbers, int bonusNumber) {
+        return new WinningLotto(numbers, new LottoNumber(bonusNumber));
+    }
 }

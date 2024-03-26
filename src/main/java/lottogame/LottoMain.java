@@ -5,6 +5,7 @@ import lottogame.domain.Lotto;
 import lottogame.domain.LottoFactory;
 import lottogame.domain.LottoGame;
 import lottogame.domain.Rank;
+import lottogame.domain.WinningLotto;
 import lottogame.view.InputView;
 import lottogame.view.ResultView;
 import utils.numbergenerator.RandomNumberGenerator;
@@ -18,7 +19,8 @@ public class LottoMain {
         ResultView.printCountOfPurchaseLottos(lottos);
         ResultView.printLottos(lottos);
 
-        Lotto winningLotto = lottoGame.createLotto(InputView.requestWinningLotto());
+        WinningLotto winningLotto = lottoGame.createLotto(InputView.requestWinningLotto(),
+                InputView.requestBonusNumber());
 
         ResultView.printWinningResult(lottoGame.checkRanks(winningLotto, lottos));
         ResultView.printReturnOfRate(lottoGame.calculateReturnOfRate(winningLotto, lottos));

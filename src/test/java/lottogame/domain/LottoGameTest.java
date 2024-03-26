@@ -52,10 +52,11 @@ class LottoGameTest {
         List<Lotto> lottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 7)),
-                new Lotto(List.of(1, 2, 3, 4, 7, 8)),
-                new Lotto(List.of(1, 2, 4, 7, 8, 9)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 8)),
+                new Lotto(List.of(1, 2, 3, 4, 8, 9)),
+                new Lotto(List.of(1, 2, 3, 8, 9, 10)),
                 new Lotto(List.of(1, 2, 7, 8, 9, 10)));
-        Lotto winnerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        WinningLotto winnerLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), new LottoNumber(7));
         List<Rank> ranks = lottoGame.checkRanks(winnerLotto, lottos);
         assertThat(ranks).contains(Rank.FIRST, Rank.SECOND, Rank.THIRD, Rank.FOURTH, Rank.EMPTY);
     }
